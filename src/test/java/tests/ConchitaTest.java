@@ -25,4 +25,15 @@ public class ConchitaTest {
     Assert.assertFalse(driver.findElement(By.xpath("//input[@value='wurst']")).isSelected());
     Assert.assertFalse(driver.findElement(By.xpath("//label[text()='Zena']/input")).isSelected());
   }
+
+  @Test
+  public void itShouldSelectMale() {
+    driver.findElement(By.xpath("//input[@value='wurst']")).click();
+    //overit hlasku
+    String expectedMessage = "It's wurst";
+    String actualMessage = driver.findElement(By.cssSelector("h1.description")).getText();
+    Assert.assertEquals(expectedMessage, actualMessage);
+    //overit ze moznost zena nie je vybrata
+    Assert.assertFalse(driver.findElement(By.xpath("//label[text()='Zena']/input")).isSelected());
+  }
 }

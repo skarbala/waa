@@ -16,7 +16,7 @@ public class GosslingatorTest {
 
   @Before
   public void setUp() {
-    System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+    System.setProperty("webdriver.chrome.driver", "chromedriver74.exe");
     //0.spustit prehliadac
     driver = new ChromeDriver();
     //1.otvorit stranku
@@ -75,6 +75,10 @@ public class GosslingatorTest {
         Assert.assertEquals("ryans", actualDescription);
       }
 
+      //overim pocet obrazkov ryana
+      int numberOfRyanImages = driver.findElements(By.cssSelector("img")).size();
+      Assert.assertEquals(i + 1, numberOfRyanImages);
+
       System.out.println("index i = " + i);
       System.out.println("pocet ryanov = " + actualNumberOfRyans);
     }
@@ -100,6 +104,16 @@ public class GosslingatorTest {
       actualNumberOfRyans = driver.findElement(By.id("ryanCounter")).getText();
       clicks++;
     }
+  }
+
+  //  #2priklad: otestujte v cykle pocet zobrazenych obrazkov ryana.
+
+  @Test
+  public void itShouldDisplayNoRyanOnPageOpen() {
+    Assert.assertEquals(
+        0,
+        driver.findElements(By.cssSelector("img")).size()
+    );
   }
 
   @After

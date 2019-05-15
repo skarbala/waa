@@ -4,22 +4,17 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class PokemonTest {
+import base.TestBase;
 
-  WebDriver driver;
+public class PokemonTest extends TestBase {
 
   @Before
-  public void setUp() {
-    System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-    //0.spustit prehliadac
-    driver = new ChromeDriver();
+  public void openPage() {
     //1.otvorit stranku
-    driver.get("http://localhost:8888/vybersi.php");
+    driver.get(BASE_URL + "/vybersi.php");
   }
 
   @Test

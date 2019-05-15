@@ -1,29 +1,18 @@
 package tests;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class XpathTrainingTest {
-  WebDriver driver;
+import base.TestBase;
+
+public class XpathTrainingTest extends TestBase {
 
   @Before
-  public void setUp() {
-    System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-    //0.spustit prehliadac
-    driver = new ChromeDriver();
+  public void openPage() {
     //1.otvorit stranku
-    driver.get("http://localhost:8888/xpathtrainingcenter.php");
-  }
-
-  @After
-  public void tearDown() {
-    driver.close();
-    driver.quit();
+    driver.get(BASE_URL + "/xpathtrainingcenter.php");
   }
 
   @Test

@@ -4,20 +4,16 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ConchitaTest {
+import base.TestBase;
 
-  WebDriver driver;
+public class ConchitaTest extends TestBase {
 
   @Before
-  public void setUp() {
-    System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-    //0.spustit prehliadac
-    driver = new ChromeDriver();
+  public void openPage() {
     //1.otvorit stranku
-    driver.get("http://localhost:8888/zenaalebomuz.php");
+    driver.get(BASE_URL + "/zenaalebomuz.php");
   }
 
   @Test

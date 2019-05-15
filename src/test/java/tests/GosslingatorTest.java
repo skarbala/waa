@@ -1,5 +1,6 @@
 package tests;
 
+import context.TestBase;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import org.openqa.selenium.WebElement;
 
 public class GosslingatorTest extends TestBase {
 
-    String actualNumberOfRyans;
+    private String actualNumberOfRyans;
 
     @Before
     public void openPage() {

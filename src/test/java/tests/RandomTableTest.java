@@ -14,7 +14,7 @@ public class RandomTableTest extends TestBase {
   @Before
   public void openPage() {
     //1.otvorit stranku
-    driver.get("http://localhost:8888/tabulka.php");
+    driver.get(BASE_URL +"/tabulka.php");
   }
 
   @Test

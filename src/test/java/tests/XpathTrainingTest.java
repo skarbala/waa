@@ -18,13 +18,11 @@ public class XpathTrainingTest extends TestBase {
   @Test
   public void itShouldDisplayAction() {
     String buttonText = "One more button";
-    driver.findElement(By.xpath("//button[contains(text(),'" + buttonText + "')]")).click();
-
-    String actualMessage = driver.findElement(By.cssSelector("div.output h2 span")).getText();
+    clickOnButton(buttonText);
 
     Assert.assertEquals(
         "you clicked " + buttonText.toLowerCase(),
-        actualMessage
+        getActualMessage()
     );
   }
 
@@ -36,11 +34,17 @@ public class XpathTrainingTest extends TestBase {
     driver.findElement(By.id("hitme")).click();
 
     //precitam hodnotu zo stranky a ulozim ju do premennej
-    String actualMessage = driver.findElement(By.cssSelector("div.output h2 span")).getText();
-
     Assert.assertEquals(
         "you entered " + message,
-        actualMessage
+        getActualMessage()
     );
+  }
+
+  private String getActualMessage() {
+    return driver.findElement(By.cssSelector("div.output h2 span")).getText();
+  }
+
+  private void clickOnButton(String buttonText) {
+    driver.findElement(By.xpath("//button[contains(text(),'" + buttonText + "')]")).click();
   }
 }

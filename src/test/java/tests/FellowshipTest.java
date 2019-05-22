@@ -21,7 +21,7 @@ public class FellowshipTest extends TestBase {
 
   @Test
   public void itShouldContainNameForEachFellow() {
-    List<WebElement> fellowElements = driver.findElements(By.cssSelector("ul.list-of-fellows li"));
+    List<WebElement> fellowElements = getFellowElements();
 
     for (WebElement fellowElement : fellowElements) {
       Assert.assertFalse(fellowElement.findElement(By.cssSelector("h1")).getText().isEmpty());
@@ -31,7 +31,7 @@ public class FellowshipTest extends TestBase {
   @Test
   public void itShouldContainSpecifiedFellows() {
     //najdem si zoznam elementov (kachliciek)
-    List<WebElement> fellowElements = driver.findElements(By.cssSelector("ul.list-of-fellows li"));
+    List<WebElement> fellowElements = getFellowElements();
     //predpripravim si zoznam stringov do ktoreho si ulozim jednotlive mena
     List<String> fellowNames = new ArrayList<String>();
 
@@ -57,7 +57,7 @@ public class FellowshipTest extends TestBase {
     fellowsToSelect.add("Frodo");
 
     for (String fellowToSelect : fellowsToSelect) {
-      driver.findElement(By.xpath("//h1[contains(text(),'" + fellowToSelect + "')]")).click();
+      selectFellow(fellowToSelect);
     }
 
     Assert.assertEquals("Complete", driver.findElement(By.cssSelector("div.points-left h3")).getText());
@@ -66,7 +66,7 @@ public class FellowshipTest extends TestBase {
   @Test
   public void itShouldDisplayPointsForEachFellow() {
     //najdem si zoznam vsetkych spolocnikov z ringu a ulozim ich do listu webelementov
-    List<WebElement> displayedFellows = driver.findElements(By.cssSelector("ul.list-of-fellows li"));
+    List<WebElement> displayedFellows = getFellowElements();
     for (WebElement displayedFellow : displayedFellows) {
 
       // /pre kazdeho najdem element v ktorom je ulozeny pocet bodov a zistim jeho text
@@ -75,5 +75,13 @@ public class FellowshipTest extends TestBase {
       //overim ze hodnota actual points nie je prazdna
       Assert.assertFalse(actualPoints.isEmpty());
     }
+  }
+
+  private void selectFellow(String fellowName) {
+    driver.findElement(By.xpath("//h1[contains(text(),'" + fellowName + "')]")).click();
+  }
+
+  private List<WebElement> getFellowElements() {
+    return driver.findElements(By.cssSelector("ul.list-of-fellows li"));
   }
 }

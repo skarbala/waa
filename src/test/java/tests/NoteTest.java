@@ -22,11 +22,10 @@ public class NoteTest extends TestBase {
   @Test
   public void itShouldAddNote() throws InterruptedException {
     //vytvorim si casovu peciatku pre unikatnost title
-    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
     Fairy fairy = Fairy.create();
     Person fakePerson = fairy.person();
     //ulozim si hodnoty do premennych
-    String title = "Title " + timestamp.getTime();
+    String title = generateUniqueTitle();
     String author = fakePerson.getFirstName() + " " + fakePerson.getLastName();
     String message = "toto je velmi dlhy a zmysluplny odkaz";
 
@@ -68,4 +67,10 @@ public class NoteTest extends TestBase {
     Assert.assertTrue(listItem.findElement(By.cssSelector("div.description a")).isDisplayed());
     Assert.assertEquals("detail", listItem.findElement(By.cssSelector("div.description a")).getText());
   }
+
+  private String generateUniqueTitle() {
+    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+    return "Title " + timestamp.getTime();
+  }
+
 }

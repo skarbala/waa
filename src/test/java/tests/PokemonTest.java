@@ -3,18 +3,18 @@ package tests;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 import base.TestBase;
+import pages.PokemonPage;
 
 public class PokemonTest extends TestBase {
+  private PokemonPage pokemonPage;
 
   @Before
   public void openPage() {
     //1.otvorit stranku
     driver.get(BASE_URL + "/vybersi.php");
+    pokemonPage = new PokemonPage(driver);
   }
 
   @Test
@@ -23,19 +23,10 @@ public class PokemonTest extends TestBase {
 
     for (String pokemon : selectedPokemons) {
       //vyberiem pokemona
-      selectPokemon(pokemon);
+      pokemonPage.selectPokemon(pokemon);
       //overim hlasku
-      Assert.assertEquals(getExpectedMessage(pokemon), getActualMessage());
+      Assert.assertEquals(getExpectedMessage(pokemon), pokemonPage.getActualMessage());
     }
-  }
-
-  private void selectPokemon(String pokemonToSelect) {
-    WebElement pokemonSelect = driver.findElement(By.cssSelector("select"));
-    new Select(pokemonSelect).selectByVisibleText(pokemonToSelect);
-  }
-
-  private String getActualMessage() {
-    return driver.findElement(By.cssSelector("div.pokemon h3")).getText();
   }
 
   private String getExpectedMessage(String pokemonName) {

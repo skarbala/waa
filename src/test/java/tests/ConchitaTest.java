@@ -4,11 +4,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import base.TestBase;
+import pages.ConchitaPage;
 
 public class ConchitaTest extends TestBase {
+  ConchitaPage conchitaPage;
 
   @Before
   public void openPage() {
@@ -24,7 +25,8 @@ public class ConchitaTest extends TestBase {
 
   @Test
   public void itShouldSelectMale() {
-    driver.findElement(By.xpath("//input[@value='wurst']")).click();
+    conchitaPage = new ConchitaPage(driver);
+    conchitaPage.selectWurst();
     //overit hlasku
     String expectedMessage = "It's wurst";
     String actualMessage = driver.findElement(By.cssSelector("h1.description")).getText();

@@ -2,12 +2,12 @@ package models;
 
 public class Note {
   private String title;
-  private String author;
+  private String person;
   private String message;
 
-  public Note(String title, String author, String message) {
+  public Note(String title, String person, String message) {
     this.title = title;
-    this.author = author;
+    this.person = person;
     this.message = message;
   }
 
@@ -15,8 +15,8 @@ public class Note {
     return title;
   }
 
-  public String getAuthor() {
-    return author;
+  public String getPerson() {
+    return person;
   }
 
   public String getMessage() {

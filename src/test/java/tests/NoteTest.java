@@ -27,19 +27,19 @@ public class NoteTest extends TestBase {
     Person fakePerson = fairy.person();
     //ulozim si hodnoty do premennych
 
-    String title = generateUniqueTitle();
-    String author = "Anton";
-    String message = "toto je velmi dlhy a zmysluplny odkaz";
-
-    Note noteToAdd = new Note(title, author, message);
+    Note noteToAdd = new Note(
+        generateUniqueTitle(),
+        "Anton",
+        "toto je velmi dlhy a zmysluplny odkaz"
+    );
 
     notePage.enterNoteData(noteToAdd);
     notePage.submitNewNote();
-    notePage.checkNoteInList(title);
+    notePage.checkNoteInList(noteToAdd.getTitle());
     notePage.getLastNoteFromList().click();
     //overim detail zaznamu
     Thread.sleep(1000);
-    notePage.checkNoteDetail(title, author, message);
+    notePage.checkNoteDetail(noteToAdd);
   }
 
   private String generateUniqueTitle() {

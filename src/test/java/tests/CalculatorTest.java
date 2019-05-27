@@ -3,7 +3,6 @@ package tests;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 import base.TestBase;
 import pages.CalculatorPage;
@@ -41,8 +40,8 @@ public class CalculatorTest extends TestBase {
     calculatorPage.enterSecondInput("4");
     calculatorPage.deductNumbers();
     calculatorPage.resetCalculator();
-    Assert.assertTrue(driver.findElement(By.id("firstInput")).getAttribute("value").isEmpty());
-    Assert.assertTrue(driver.findElement(By.id("secondInput")).getAttribute("value").isEmpty());
+    Assert.assertTrue(calculatorPage.getFirstInput().getAttribute("value").isEmpty());
+    Assert.assertTrue(calculatorPage.getSecondInput().getAttribute("value").isEmpty());
   }
 
   @Test

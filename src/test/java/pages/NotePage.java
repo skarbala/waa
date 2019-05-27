@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import models.Note;
+
 public class NotePage {
 
   @FindBy(name = "title")
@@ -28,10 +30,10 @@ public class NotePage {
     PageFactory.initElements(pageDriver, this);
   }
 
-  public void enterNoteData(String title, String person, String message) {
-    titleInput.sendKeys(title);
-    authorInput.sendKeys(person);
-    messageInput.sendKeys(message);
+  public void enterNoteData(Note note) {
+    titleInput.sendKeys(note.getTitle());
+    authorInput.sendKeys(note.getAuthor());
+    messageInput.sendKeys(note.getMessage());
   }
 
   public void submitNewNote() {

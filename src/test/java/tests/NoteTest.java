@@ -8,6 +8,7 @@ import org.junit.Test;
 import base.TestBase;
 import io.codearte.jfairy.Fairy;
 import io.codearte.jfairy.producer.person.Person;
+import models.Note;
 import pages.NotePage;
 
 public class NoteTest extends TestBase {
@@ -25,11 +26,14 @@ public class NoteTest extends TestBase {
     Fairy fairy = Fairy.create();
     Person fakePerson = fairy.person();
     //ulozim si hodnoty do premennych
+
     String title = generateUniqueTitle();
-    String author = fakePerson.getFirstName() + " " + fakePerson.getLastName();
+    String author = "Anton";
     String message = "toto je velmi dlhy a zmysluplny odkaz";
 
-    notePage.enterNoteData(title, author, message);
+    Note noteToAdd = new Note(title, author, message);
+
+    notePage.enterNoteData(noteToAdd);
     notePage.submitNewNote();
     notePage.checkNoteInList(title);
     notePage.getLastNoteFromList().click();

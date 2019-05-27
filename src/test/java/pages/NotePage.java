@@ -32,7 +32,7 @@ public class NotePage {
 
   public void enterNoteData(Note note) {
     titleInput.sendKeys(note.getTitle());
-    authorInput.sendKeys(note.getAuthor());
+    authorInput.sendKeys(note.getPerson());
     messageInput.sendKeys(note.getMessage());
   }
 
@@ -47,7 +47,7 @@ public class NotePage {
   public void checkNoteDetail(Note noteToCheck) {
     WebElement detail = pageDriver.findElement(By.cssSelector("div.content"));
     Assert.assertEquals(noteToCheck.getTitle(), detail.findElement(By.cssSelector("h4.title")).getText());
-    Assert.assertEquals(noteToCheck.getAuthor(), detail.findElement(By.cssSelector("h4.recipent")).getText());
+    Assert.assertEquals(noteToCheck.getPerson(), detail.findElement(By.cssSelector("h4.recipent")).getText());
     Assert.assertEquals(noteToCheck.getMessage(), detail.findElement(By.cssSelector("p")).getText());
   }
 

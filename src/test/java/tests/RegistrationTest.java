@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 import base.TestBase;
+import pages.RegistrationPage;
 
 public class RegistrationTest extends TestBase {
 
@@ -23,11 +24,8 @@ public class RegistrationTest extends TestBase {
     String heslo = "123456";
 
     //zadam zakladne udaje
-    driver.findElement(By.name("email")).sendKeys(email);
-    driver.findElement(By.name("name")).sendKeys(meno);
-    driver.findElement(By.name("surname")).sendKeys(priezvisko);
-    driver.findElement(By.name("password")).sendKeys(heslo);
-    driver.findElement(By.name("password-repeat")).sendKeys(heslo);
+    RegistrationPage registrationPage = new RegistrationPage(driver);
+    registrationPage.enterData(email, meno, priezvisko, heslo);
 
     //kliknut na checkbox som robot
     driver.findElement(By.name("robot")).click();
@@ -46,4 +44,6 @@ public class RegistrationTest extends TestBase {
     //overit uspesnu hlasku
     Assert.assertTrue(driver.findElement(By.cssSelector("div.alert-danger")).isDisplayed());
   }
+
+
 }

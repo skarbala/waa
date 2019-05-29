@@ -36,9 +36,8 @@ public class NoteTest extends TestBase {
     notePage.enterNoteData(noteToAdd);
     notePage.submitNewNote();
     notePage.checkNoteInList(noteToAdd.getTitle());
-    notePage.getLastNoteFromList().click();
-    //overim detail zaznamu
-    Thread.sleep(1000);
+
+    notePage.openLastNote();
     notePage.checkNoteDetail(noteToAdd);
   }
 

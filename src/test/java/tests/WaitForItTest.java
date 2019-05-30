@@ -18,7 +18,7 @@ public class WaitForItTest extends TestBase {
   }
 
   @Test
-  public void waitForValue() throws InterruptedException {
+  public void waitForValue() {
     String expectedText = "dary !!!";
     driver.findElement(By.id("startWaitForText")).click();
     WebElement input = driver.findElement(By.id("waitForTextInput"));
